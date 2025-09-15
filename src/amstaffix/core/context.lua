@@ -1,4 +1,4 @@
-local EventMediator = require("amstaffix.core.event_dispatcher")
+local EventMediator = require("amstaffix.core.event_mediator")
 
 ---@class ContextPerfUnit
 local ContextPerfUnit = {

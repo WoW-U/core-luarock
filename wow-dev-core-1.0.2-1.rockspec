@@ -1,6 +1,6 @@
 package = "wow-dev-core"
 rockspec_format = "3.1"
-version = "1.0.1-1"
+version = "1.0.2-1"
 source = {
    url = "git+ssh://git@github.com/WoW-U/core-luarock.git",
    tag = "v1.0.1"
@@ -10,10 +10,10 @@ description = {
    license = "MIT"
 }
 dependencies = {
-   "lua >= 5.1, < 5.4",
+   "lua >= 5.1",
 }
 build_dependencies = {
-   "lua >= 5.1, < 5.4",
+   "lua >= 5.1",
 }
 build = {
    type = "builtin",

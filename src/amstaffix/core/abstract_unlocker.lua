@@ -15,6 +15,10 @@ function AbstractUnlocker:new()
     return obj
 end
 
+--
+-- Abstract methods, that should be implemented
+--
+
 ---@param objectRef UnlockerObjectReference
 ---@nodiscard
 ---@return number x, number y, number z
@@ -70,6 +74,105 @@ end
 ---@return number distance, Error? err
 function AbstractUnlocker:getDistance3DObject(objectRef1, objectRef2)
     error("not implemented")
+end
+
+---Flags:
+---```lua
+---M2Collision = 0x1
+---M2Render = 0x2
+---WMOCollision = 0x10
+---WMORender = 0x20
+---Terrain = 0x100
+---WaterWalkableLiquid = 0x10000
+---Liquid = 0x20000
+---EntityCollision = 0x100000
+---```
+---@param x number
+---@param y number
+---@param flags number
+---@nodiscard
+---@return number x, number y, number z
+function AbstractUnlocker:convertScreenToWorld(x, y, flags)
+    error("not implemented")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return UnlockerObject
+function AbstractUnlocker:getObjectCreatedBy(objectRef)
+    error("not implemented")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function AbstractUnlocker:getObjectHeight(objectRef)
+    error("not implemented")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number
+function AbstractUnlocker:getObjectAnimationFlags(objectRef)
+    error("not implemented")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number
+function AbstractUnlocker:getObjectDynamicFlags(objectRef)
+    error("not implemented")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number
+function AbstractUnlocker:getObjectMovementFlags(objectRef)
+    error("not implemented")
+end
+
+-- 
+-- methods, which build upon basic unlocker methods 
+--
+
+---@param objectRef1 UnlockerObjectReference
+---@param objectRef2 UnlockerObjectReference
+---@nodiscard
+---@return boolean, Error?
+function AbstractUnlocker:isUnitFacing(objectRef1, objectRef2)
+    local ax, ay, az = self:getObjectPosition(objectRef1)
+    local bx, by, bz = self:getObjectPosition(objectRef2)
+    if not bx then
+        return false, nil
+    end
+    local dx, dy, dz = ax - bx, ay - by, az - bz
+    local rotation, err = self:getObjectFacing(objectRef1);
+    if err ~= nil then
+        return false, err
+    end
+
+    local value = (dy * math.sin(-rotation) - dx * math.cos(-rotation)) /
+        math.sqrt(dx * dx + dy * dy)
+    local isFacing = value > 0.25
+
+    return isFacing
+end
+
+---@param objectRef1 UnlockerObjectReference
+---@param objectRef2 UnlockerObjectReference
+---@nodiscard
+---@return boolean
+function AbstractUnlocker:isObjectInLineOfSight(objectRef1, objectRef2)
+    if not UnitExists(objectRef1 --[[@as string]]) or not UnitExists(objectRef2 --[[@as string]]) then
+        return false
+    end
+
+    local ax, ay, az = self:getObjectPosition(objectRef1)
+    local bx, by, bz = self:getObjectPosition(objectRef2)
+    local flags = bit.bor(0x10, 0x100, 0x1)
+    local hit = self:traceLine(ax, ay, az + 2.25, bx, by, bz + 2.25, flags);
+
+    return hit == false
 end
 
 return AbstractUnlocker

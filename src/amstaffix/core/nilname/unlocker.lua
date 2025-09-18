@@ -75,5 +75,50 @@ end
 ---@nodiscard
 ---@return number distance, Error? err
 function NilNameUnlocker:getDistance3DObject(objectRef1, objectRef2)
-    return self.nn.Distance(objectRef1 --[[@as NilName.ObjectReference]], objectRef2 --[[@as NilName.ObjectReference]]), nil
+    return self.nn.Distance(objectRef1 --[[@as NilName.ObjectReference]], objectRef2 --[[@as NilName.ObjectReference]]),
+        nil
+end
+
+---@param x number
+---@param y number
+---@param flags number
+---@nodiscard
+---@return number x, number y, number z
+function NilNameUnlocker:convertScreenToWorld(x, y, flags)
+    return self.nn.ScreenToWorld(x, y, flags)
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return UnlockerObject
+function NilNameUnlocker:getObjectCreatedBy(objectRef)
+    return self.nn.ObjectCreator(objectRef --[[@as NilName.ObjectReference]]) --[[@as UnlockerObject]]
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function NilNameUnlocker:getObjectHeight(objectRef)
+    error("not implemented for NilName, find a way to implement.")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number
+function NilNameUnlocker:getObjectAnimationFlags(objectRef)
+    return self.nn.ObjectAnimationFlags(objectRef --[[@as NilName.ObjectReference]])
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number
+function NilNameUnlocker:getObjectDynamicFlags(objectRef)
+    return self.nn.DynamicFlags(objectRef --[[@as NilName.ObjectReference]])
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number
+function NilNameUnlocker:getObjectMovementFlags(objectRef)
+    return self.nn.UnitMovementFlag(objectRef --[[@as NilName.ObjectReference]])
 end

@@ -72,5 +72,50 @@ end
 ---@nodiscard
 ---@return number distance, Error? err
 function DaemonicUnlocker:getDistance3DObject(objectRef1, objectRef2)
-    return self.dmc.GetDistance3D(objectRef1 --[[@as Daemonic.ObjectReference]], objectRef2 --[[@as Daemonic.ObjectReference]]), nil
+    return
+    self.dmc.GetDistance3D(objectRef1 --[[@as Daemonic.ObjectReference]], objectRef2 --[[@as Daemonic.ObjectReference]]),
+        nil
+end
+
+---@param x number
+---@param y number
+---@param flags number
+---@return number x, number y, number z
+function DaemonicUnlocker:convertScreenToWorld(x, y, flags)
+    return self.dmc.ScreenToWorld(x, y, flags)
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return UnlockerObject
+function DaemonicUnlocker:getObjectCreatedBy(objectRef)
+    return self.dmc.UnitCreatedBy(objectRef --[[@as Daemonic.ObjectReference]]) --[[@as UnlockerObject]]
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function DaemonicUnlocker:getObjectHeight(objectRef)
+    return self.dmc.UnitHeight(objectRef --[[@as Daemonic.ObjectReference]])
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number
+function DaemonicUnlocker:getObjectAnimationFlags(objectRef)
+    return self.dmc.UnitAnimationFlags(objectRef --[[@as Daemonic.ObjectReference]])
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number
+function DaemonicUnlocker:getObjectDynamicFlags(objectRef)
+    return self.dmc.UnitDynamicFlags(objectRef --[[@as Daemonic.ObjectReference]])
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number
+function DaemonicUnlocker:getObjectMovementFlags(objectRef)
+    return self.dmc.GetUnitMovementFlags(objectRef --[[@as Daemonic.ObjectReference]])
 end

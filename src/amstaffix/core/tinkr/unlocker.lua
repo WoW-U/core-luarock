@@ -80,10 +80,64 @@ end
 ---@nodiscard
 ---@return number distance, Error? err
 function TinkrUnlocker:getDistance3DObject(objectRef1, objectRef2)
-    local res = self.tinkr.ObjectDistance(objectRef1 --[[@as Tinkr.ObjectReference]], objectRef2 --[[@as Tinkr.ObjectReference]])
+    local res = self.tinkr.ObjectDistance(objectRef1 --[[@as Tinkr.ObjectReference]],
+        objectRef2 --[[@as Tinkr.ObjectReference]])
     if type(res) == "boolean" then
         return 0, Error:new("invalid objectRef")
     end
 
     return res, nil
+end
+
+---@param x number
+---@param y number
+---@param flags number
+---@nodiscard
+---@return number x, number y, number z
+function TinkrUnlocker:convertScreenToWorld(x, y, flags)
+    return self.tinkr.ScreenToWorld(x, y, flags)
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return UnlockerObject
+function TinkrUnlocker:getObjectCreatedBy(objectRef)
+    return self.tinkr.ObjectCreator(objectRef --[[@as Tinkr.ObjectReference]]) --[[@as UnlockerObject]]
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function TinkrUnlocker:getObjectHeight(objectRef)
+    local res = self.tinkr.ObjectHeight(objectRef --[[@as Tinkr.ObjectReference]])
+    if type(res) == "boolean" then
+        return 0, Error:new("invalid objectRef")
+    end
+
+    return res, nil
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number
+function TinkrUnlocker:getObjectAnimationFlags(objectRef)
+    -- todo: should recheck
+    local _, animationFlags = self.tinkr.ObjectFlags(objectRef --[[@as Tinkr.ObjectReference]])
+    return animationFlags
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number
+function TinkrUnlocker:getObjectDynamicFlags(objectRef)
+    local _, _, _, _, _, _, dynamicFlags = self.tinkr.ObjectFlags(objectRef --[[@as Tinkr.ObjectReference]])
+    
+    return dynamicFlags
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number
+function TinkrUnlocker:getObjectMovementFlags(objectRef)
+    return self.tinkr.ObjectMovementFlag(objectRef --[[@as Tinkr.ObjectReference]])
 end

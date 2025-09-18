@@ -289,18 +289,6 @@ function AbstractUnlockerAdapterOld:getUnitFlags3(unit)
 end
 
 ---@param unit UniversalUnitPointer
----@return number
-function AbstractUnlockerAdapterOld:getUnitDynamicFlags(unit)
-    error("not implemented")
-end
-
----@param unit UniversalUnitPointer
----@return number
-function AbstractUnlockerAdapterOld:getUnitAnimationFlags(unit)
-    error("not implemented")
-end
-
----@param unit UniversalUnitPointer
 ---@return boolean
 function AbstractUnlockerAdapterOld:getUnitIsOutdoors(unit)
     error("not implemented")
@@ -312,30 +300,12 @@ function AbstractUnlockerAdapterOld:getUnitStandStateType(unit)
     error("not implemented")
 end
 
----@param unit UniversalUnitPointer
----@return number
-function AbstractUnlockerAdapterOld:getUnitHeight(unit)
-    error("not implemented")
-end
 
----@param unit UniversalUnitPointer
----@return UniversalUnitPointer
-function AbstractUnlockerAdapterOld:getUnitCreatedBy(unit)
-    error("not implemented")
-end
 
----@param x number
----@param y number
----@param flags number
----@return number x, number y, number z
-function AbstractUnlockerAdapterOld:screenToWorld(x, y, flags)
-    error("not implemented")
-end
 
----@param unit UniversalUnitPointer
----@return number
-function AbstractUnlockerAdapterOld:getUnitMovementFlags(unit)
-    error("not implemented")
-end
+
+
+
+
 
 return AbstractUnlockerAdapterOld

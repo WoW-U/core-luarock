@@ -154,6 +154,34 @@ function AbstractUnlocker:getObjectCreatureTypeId(objectRef)
     error("not implemented")
 end
 
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function AbstractUnlocker:getObjectType(objectRef)
+    error("not implemented")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return boolean
+function AbstractUnlocker:isObjectLootable(objectRef)
+    error("not implemented")
+end
+
+---@param x number
+---@param y number
+---@param z number
+function AbstractUnlocker:clickXYZ(x, y, z)
+    error("not implemented")
+end
+
+---@param func function|string
+---@param ... any
+function AbstractUnlocker:callSecurely(func, ...)
+    error("not implemented")
+end
+
+
 -- 
 -- methods, which build upon basic unlocker methods 
 --

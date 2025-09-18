@@ -145,3 +145,32 @@ function DaemonicUnlocker:getObjectCreatureTypeId(objectRef)
 
     return res, nil
 end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function DaemonicUnlocker:getObjectType(objectRef)
+    local res = self.dmc.ObjectType(objectRef --[[@as Daemonic.ObjectReference]])
+
+    return res, nil
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return boolean
+function DaemonicUnlocker:isObjectLootable(objectRef)
+    return self.dmc.UnitIsLootable(objectRef --[[@as Daemonic.ObjectReference]])
+end
+
+---@param x number
+---@param y number
+---@param z number
+function DaemonicUnlocker:clickXYZ(x, y, z)
+    self.dmc.ClickPosition(x, y, z)
+end
+
+---@param func function|string
+---@param ... any
+function DaemonicUnlocker:callSecurely(func, ...)
+    return self.dmc.SecureCode(func, ...)
+end

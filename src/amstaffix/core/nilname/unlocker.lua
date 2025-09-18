@@ -151,3 +151,35 @@ end
 function NilNameUnlocker:getObjectCreatureTypeId(objectRef)
     error("not implemented in NilName")
 end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function NilNameUnlocker:getObjectType(objectRef)
+    local res = self.nn.ObjectType(objectRef --[[@as NilName.ObjectReference]])
+    if type(res) == "boolean" or type(res) == "nil" then
+        return 0, Error:notFound()
+    end
+
+    return res, nil
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return boolean
+function NilNameUnlocker:isObjectLootable(objectRef)
+    return self.nn.ObjectLootable(objectRef --[[@as NilName.ObjectReference]])
+end
+
+---@param x number
+---@param y number
+---@param z number
+function NilNameUnlocker:clickXYZ(x, y, z)
+    self.nn.ClickPosition(x, y, z)
+end
+
+---@param func function|string
+---@param ... any
+function NilNameUnlocker:callSecurely(func, ...)
+    return self.nn.Unlock(func, ...)
+end

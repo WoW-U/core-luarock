@@ -176,3 +176,35 @@ function TinkrUnlocker:getObjectCreatureTypeId(objectRef)
 
     return res, nil
 end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function TinkrUnlocker:getObjectType(objectRef)
+    local res = self.tinkr.ObjectType(objectRef --[[@as Tinkr.ObjectReference]])
+    if type(res) == "boolean" then
+        return 0, Error:notFound()
+    end
+
+    return res, nil
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return boolean
+function TinkrUnlocker:isObjectLootable(objectRef)
+    return self.tinkr.ObjectLootable(objectRef --[[@as Tinkr.ObjectReference]])
+end
+
+---@param x number
+---@param y number
+---@param z number
+function TinkrUnlocker:clickXYZ(x, y, z)
+    self.tinkr.Click(x, y, z)
+end
+
+---@param func function|string
+---@param ... any
+function TinkrUnlocker:callSecurely(func, ...)
+    error("not implemented in Tinkr")
+end

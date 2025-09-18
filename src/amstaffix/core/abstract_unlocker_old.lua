@@ -79,19 +79,8 @@ function AbstractUnlockerAdapterOld:sendHttpRequestDeferred(method, url, headers
     return promise
 end
 
----@param x number
----@param y number
----@param z number
-function AbstractUnlockerAdapterOld:clickPosition(x, y, z)
-    error("not implemented")
-end
 
----@param funcName string
----@vararg any
----@return any
-function AbstractUnlockerAdapterOld:secureFuncCall(funcName, ...)
-    error("not implemented")
-end
+
 
 ---@param unit UniversalUnitPointer
 ---@return string
@@ -118,17 +107,7 @@ end
 
 
 
----@param unit UniversalUnitPointer
----@return number
-function AbstractUnlockerAdapterOld:getObjectType(unit)
-    error("not implemented")
-end
 
----@param unit UniversalUnitPointer
----@return number
-function AbstractUnlockerAdapterOld:getUnitCreatureTypeId(unit)
-    error("not implemented")
-end
 
 ---@param unit UniversalUnitPointer
 ---@return boolean
@@ -136,11 +115,7 @@ function AbstractUnlockerAdapterOld:getObjectIsQuestObjective(unit)
     error("not implemented")
 end
 
----@param unit UniversalUnitPointer
----@return boolean
-function AbstractUnlockerAdapterOld:getUnitIsLootable(unit)
-    error("not implemented")
-end
+
 
 ---@param unit UniversalUnitPointer
 ---@return boolean

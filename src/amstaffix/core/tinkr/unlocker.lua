@@ -131,7 +131,7 @@ end
 ---@return number
 function TinkrUnlocker:getObjectDynamicFlags(objectRef)
     local _, _, _, _, _, _, dynamicFlags = self.tinkr.ObjectFlags(objectRef --[[@as Tinkr.ObjectReference]])
-    
+
     return dynamicFlags
 end
 
@@ -140,4 +140,15 @@ end
 ---@return number
 function TinkrUnlocker:getObjectMovementFlags(objectRef)
     return self.tinkr.ObjectMovementFlag(objectRef --[[@as Tinkr.ObjectReference]])
+end
+
+---@param x number
+---@param y number
+---@param z number
+---@nodiscard
+---@return number x, number y, boolean? isOnScreen
+function TinkrUnlocker:convertWorldToScreen(x, y, z)
+    local sx, sy = self.tinkr.WorldToScreen(x, y, z)
+
+    return sx, sy, nil
 end

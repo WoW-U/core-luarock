@@ -122,3 +122,12 @@ end
 function NilNameUnlocker:getObjectMovementFlags(objectRef)
     return self.nn.UnitMovementFlag(objectRef --[[@as NilName.ObjectReference]])
 end
+
+---@param x number
+---@param y number
+---@param z number
+---@nodiscard
+---@return number x, number y, boolean? isOnScreen
+function NilNameUnlocker:convertWorldToScreen(x, y, z)
+    return self.nn.WorldToScreen(x, y, z)
+end

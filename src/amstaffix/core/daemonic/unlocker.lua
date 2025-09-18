@@ -119,3 +119,12 @@ end
 function DaemonicUnlocker:getObjectMovementFlags(objectRef)
     return self.dmc.GetUnitMovementFlags(objectRef --[[@as Daemonic.ObjectReference]])
 end
+
+---@param x number
+---@param y number
+---@param z number
+---@nodiscard
+---@return number x, number y, boolean? isOnScreen
+function DaemonicUnlocker:convertWorldToScreen(x, y, z)
+    return self.dmc.WorldToScreen(x, y, z)
+end

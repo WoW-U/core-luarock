@@ -99,14 +99,6 @@ function AbstractUnlockerAdapterOld:getObjectGUID(unit)
     error("not implemented")
 end
 
----@param x number
----@param y number
----@param z number
----@return number x, number y, boolean isOnScreen
-function AbstractUnlockerAdapterOld:worldToScreen(x, y, z)
-    error("not implemented")
-end
-
 ---@return number
 function AbstractUnlockerAdapterOld:getObjectCount()
     error("not implemented")

@@ -131,6 +131,15 @@ function AbstractUnlocker:getObjectMovementFlags(objectRef)
     error("not implemented")
 end
 
+---@param x number
+---@param y number
+---@param z number
+---@nodiscard
+---@return number x, number y, boolean? isOnScreen
+function AbstractUnlocker:convertWorldToScreen(x, y, z)
+    error("not implemented")
+end
+
 -- 
 -- methods, which build upon basic unlocker methods 
 --

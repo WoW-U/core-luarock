@@ -1,4 +1,5 @@
 local AbstractUnlocker = require("amstaffix.core.abstract_unlocker")
+local Error = require("amstaffix.core.error")
 
 ---@class NilNameUnlocker : AbstractUnlocker
 local NilNameUnlocker = {
@@ -130,4 +131,23 @@ end
 ---@return number x, number y, boolean? isOnScreen
 function NilNameUnlocker:convertWorldToScreen(x, y, z)
     return self.nn.WorldToScreen(x, y, z)
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function NilNameUnlocker:getObjectID(objectRef)
+    local res = self.nn.ObjectID(objectRef --[[@as NilName.ObjectReference]])
+    if type(res) == "boolean" or type(res) == "nil" then
+        return 0, Error:notFound()
+    end
+
+    return res, nil
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function NilNameUnlocker:getObjectCreatureTypeId(objectRef)
+    error("not implemented in NilName")
 end

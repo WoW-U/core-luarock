@@ -140,6 +140,20 @@ function AbstractUnlocker:convertWorldToScreen(x, y, z)
     error("not implemented")
 end
 
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function AbstractUnlocker:getObjectID(objectRef)
+    error("not implemented")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function AbstractUnlocker:getObjectCreatureTypeId(objectRef)
+    error("not implemented")
+end
+
 -- 
 -- methods, which build upon basic unlocker methods 
 --

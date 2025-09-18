@@ -116,11 +116,7 @@ function AbstractUnlockerAdapterOld:getObjectName(unit)
     error("not implemented")
 end
 
----@param unit UniversalUnitPointer
----@return ObjectID
-function AbstractUnlockerAdapterOld:getObjectID(unit)
-    error("not implemented")
-end
+
 
 ---@param unit UniversalUnitPointer
 ---@return number

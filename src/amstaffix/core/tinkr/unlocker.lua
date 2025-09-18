@@ -152,3 +152,27 @@ function TinkrUnlocker:convertWorldToScreen(x, y, z)
 
     return sx, sy, nil
 end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function TinkrUnlocker:getObjectID(objectRef)
+    local res = self.tinkr.ObjectId(objectRef --[[@as Tinkr.ObjectReference]])
+    if type(res) == "boolean" then
+        return 0, Error:notFound()
+    end
+
+    return res, nil
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function TinkrUnlocker:getObjectCreatureTypeId(objectRef)
+    local res = self.tinkr.ObjectCreatureType(objectRef --[[@as Tinkr.ObjectReference]])
+    if type(res) == "boolean" then
+        return 0, Error:notFound()
+    end
+
+    return res, nil
+end

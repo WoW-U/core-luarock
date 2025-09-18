@@ -128,3 +128,20 @@ end
 function DaemonicUnlocker:convertWorldToScreen(x, y, z)
     return self.dmc.WorldToScreen(x, y, z)
 end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function DaemonicUnlocker:getObjectID(objectRef)
+    local res = self.dmc.ObjectID(objectRef --[[@as Daemonic.ObjectReference]])
+    return res, nil
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function DaemonicUnlocker:getObjectCreatureTypeId(objectRef)
+    local res = self.dmc.UnitCreatureTypeId(objectRef --[[@as Daemonic.ObjectReference]])
+
+    return res, nil
+end

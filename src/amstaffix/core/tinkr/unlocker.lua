@@ -208,3 +208,115 @@ end
 function TinkrUnlocker:callSecurely(func, ...)
     error("not implemented in Tinkr")
 end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return string, Error? err
+function TinkrUnlocker:getObjectName(objectRef)
+    local res = self.tinkr.ObjectName(objectRef --[[@as Tinkr.ObjectReference]])
+    if type(res) == "boolean" or not res then
+        return "", Error:notFound()
+    end
+
+    return res, nil
+end
+
+---@nodiscard
+---@return number x, number y, number z
+function TinkrUnlocker:getCorpsePosition()
+    return self.tinkr.GetCorpsePosition()
+end
+
+---@nodiscard
+---@param objectRef UnlockerObjectReference
+---@return number type, Error? err
+function TinkrUnlocker:getGameObjectType(objectRef)
+    local res = self.tinkr.GameObjectType(objectRef --[[@as Tinkr.ObjectReference]])
+    if type(res) == "boolean" then
+        return 0, Error:notFound()
+    end
+
+    return res, nil
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return boolean exists
+function TinkrUnlocker:isObjectExists(objectRef)
+    error("not implemented in Tinkr")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function TinkrUnlocker:getUnitFlags(objectRef)
+    local flags1, _, _, _, unitFlags1 = self.tinkr.ObjectFlags(objectRef --[[@as Tinkr.ObjectReference]])
+    if type(flags1) == "boolean" then
+        return 0, Error:notFound()
+    end
+
+    return unitFlags1, nil
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function TinkrUnlocker:getUnitFlags2(objectRef)
+    local flags1, _, _, _, _, unitFlags2 = self.tinkr.ObjectFlags(objectRef --[[@as Tinkr.ObjectReference]])
+    if type(flags1) == "boolean" then
+        return 0, Error:notFound()
+    end
+
+    return unitFlags2, nil
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function TinkrUnlocker:getUnitNpcFlags(objectRef)
+    error("not implemented in Tinkr")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return UnlockerObject?
+function TinkrUnlocker:getUnitTarget(objectRef)
+    error("not implemented in Tinkr")
+end
+
+---@param x1 number
+---@param y1 number
+---@param z1 number
+---@param x2 number
+---@param y2 number
+---@param z2 number
+---@nodiscard
+---@return number facing
+function TinkrUnlocker:getAnglesXYZ(x1, y1, z1, x2, y2, z2)
+    error("not implemented in Tinkr")
+end
+
+---@param radians number
+function TinkrUnlocker:setPitch(radians)
+    self.tinkr.SetPitch(radians)
+end
+
+---@param x number
+---@param y number
+---@param z number
+function TinkrUnlocker:clickToMove(x, y, z)
+    self.tinkr.MoveTo(x, y, z)
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function TinkrUnlocker:getUnitFlags3(objectRef)
+    error("not implemented in Tinkr")
+end
+
+---@param radians number
+---@param update boolean
+function TinkrUnlocker:faceDirection(radians, update)
+    self.tinkr.FaceDirection(radians, update)
+end

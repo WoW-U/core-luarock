@@ -181,6 +181,108 @@ function AbstractUnlocker:callSecurely(func, ...)
     error("not implemented")
 end
 
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return string, Error? err
+function AbstractUnlocker:getObjectName(objectRef)
+    error("not implemented")
+end
+
+---@nodiscard
+---@return number x, number y, number z
+function AbstractUnlocker:getCorpsePosition()
+    error("not implemented")
+end
+
+---@nodiscard
+---@param objectRef UnlockerObjectReference
+---@return number type, Error? err
+function AbstractUnlocker:getGameObjectType(objectRef)
+    error("not implemented")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return boolean exists
+function AbstractUnlocker:isObjectExists(objectRef)
+    error("not implemented")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function AbstractUnlocker:getUnitFlags(objectRef)
+    error("not implemented")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function AbstractUnlocker:getUnitFlags2(objectRef)
+    error("not implemented")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function AbstractUnlocker:getUnitNpcFlags(objectRef)
+    error("not implemented")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return UnlockerObject?
+function AbstractUnlocker:getUnitTarget(objectRef)
+    error("not implemented")
+end
+
+---@param objectRef1 UnlockerObjectReference
+---@param objectRef2 UnlockerObjectReference
+---@nodiscard
+---@return number facing
+function AbstractUnlocker:getAnglesObjects(objectRef1, objectRef2)
+    local x1, y1, z1 = self:getObjectPosition(objectRef1)
+    local x2, y2, z2 = self:getObjectPosition(objectRef2)
+
+    return self:getAnglesXYZ(x1, y1, z1, x2, y2, z2)
+end
+
+---@param x1 number
+---@param y1 number
+---@param z1 number
+---@param x2 number
+---@param y2 number
+---@param z2 number
+---@nodiscard
+---@return number facing
+function AbstractUnlocker:getAnglesXYZ(x1, y1, z1, x2, y2, z2)
+    error("not implemented")
+end
+
+---@param radians number
+function AbstractUnlocker:setPitch(radians)
+    error("not implemented")
+end
+
+---@param x number
+---@param y number
+---@param z number
+function AbstractUnlocker:clickToMove(x, y, z)
+    error("not implemented")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function AbstractUnlocker:getUnitFlags3(objectRef)
+    error("not implemented")
+end
+
+---@param radians number
+---@param update boolean
+function AbstractUnlocker:faceDirection(radians, update)
+    error("not implemented")
+end
 
 -- 
 -- methods, which build upon basic unlocker methods 

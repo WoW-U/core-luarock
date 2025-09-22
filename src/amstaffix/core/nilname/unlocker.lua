@@ -183,3 +183,105 @@ end
 function NilNameUnlocker:callSecurely(func, ...)
     return self.nn.Unlock(func, ...)
 end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return string, Error? err
+function NilNameUnlocker:getObjectName(objectRef)
+    local res = self.nn.ObjectName(objectRef --[[@as NilName.ObjectReference]])
+    if not res then
+        return "", Error:notFound()
+    end
+
+    return res, nil
+end
+
+---@nodiscard
+---@return number x, number y, number z
+function NilNameUnlocker:getCorpsePosition()
+    return self.nn.GetCorpsePosition()
+end
+
+---@nodiscard
+---@param objectRef UnlockerObjectReference
+---@return number type, Error? err
+function NilNameUnlocker:getGameObjectType(objectRef)
+    local res = self.nn.GameObjectType(objectRef --[[@as NilName.ObjectReference]])
+    if res == nil then
+        return 0, Error:notFound()
+    end
+
+    return res, nil
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return boolean exists
+function NilNameUnlocker:isObjectExists(objectRef)
+    return self.nn.ObjectExists(objectRef --[[@as NilName.ObjectReference]])
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function NilNameUnlocker:getUnitFlags(objectRef)
+    return self.nn.UnitFlags1(objectRef --[[@as NilName.ObjectReference]])
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function NilNameUnlocker:getUnitFlags2(objectRef)
+    return self.nn.UnitFlags2(objectRef --[[@as NilName.ObjectReference]])
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function NilNameUnlocker:getUnitNpcFlags(objectRef)
+    error("not implemented in NilName")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return UnlockerObject?
+function NilNameUnlocker:getUnitTarget(objectRef)
+    return self.nn.UnitTarget(objectRef --[[@as NilName.ObjectReference]]) --[[@as UnlockerObject]]
+end
+
+---@param x1 number
+---@param y1 number
+---@param z1 number
+---@param x2 number
+---@param y2 number
+---@param z2 number
+---@nodiscard
+---@return number facing
+function NilNameUnlocker:getAnglesXYZ(x1, y1, z1, x2, y2, z2)
+    return self.nn.GetAnglesBetweenPositions(x1, y1, z1, x2, y2, z2)
+end
+
+---@param radians number
+function NilNameUnlocker:setPitch(radians)
+    error("not implemented in NilName")
+end
+
+---@param x number
+---@param y number
+---@param z number
+function NilNameUnlocker:clickToMove(x, y, z)
+    self.nn.ClickToMove(x, y, z)
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return number, Error? err
+function NilNameUnlocker:getUnitFlags3(objectRef)
+    return self.nn.UnitFlags3(objectRef --[[@as NilName.ObjectReference]])
+end
+
+---@param radians number
+---@param update boolean
+function NilNameUnlocker:faceDirection(radians, update)
+    self.nn.SetPlayerFacing(radians, update)
+end

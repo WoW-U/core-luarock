@@ -99,12 +99,6 @@ function AbstractUnlockerAdapterOld:getRawObjectWithIndex(index)
     error("not implemented")
 end
 
----@param unit UniversalUnitPointer
----@return string
-function AbstractUnlockerAdapterOld:getObjectName(unit)
-    error("not implemented")
-end
-
 
 
 
@@ -123,74 +117,31 @@ function AbstractUnlockerAdapterOld:getUnitIsSubmerged(unit)
     error("not implemented")
 end
 
----@param unit UniversalUnitPointer
----@return number
-function AbstractUnlockerAdapterOld:getUnitNpcFlags(unit)
-    error("not implemented")
-end
 
----@param unit UniversalUnitPointer
----@return number
-function AbstractUnlockerAdapterOld:getUnitFlags(unit)
-    error("not implemented")
-end
 
----@param unit UniversalUnitPointer
----@return UniversalUnitPointer|nil
-function AbstractUnlockerAdapterOld:getUnitTarget(unit)
-    error("not implemented")
-end
+
+
+
 
 ---@param unit UniversalUnitPointer
 function AbstractUnlockerAdapterOld:setTarget(unit)
     error("not implemented")
 end
 
----@param unit UniversalUnitPointer
----@param otherUnit UniversalUnitPointer
----@return number facing, number pitch
-function AbstractUnlockerAdapterOld:getAnglesBetweenUnits(unit, otherUnit)
-    error("not implemented")
-end
 
----@param x1 number
----@param y1 number
----@param z1 number
----@param x2 number
----@param y2 number
----@param z2 number
----@return number facing, number pitch
-function AbstractUnlockerAdapterOld:getAnglesBetweenPositions(x1, y1, z1, x2, y2, z2)
-    error("not implemented")
-end
 
----@param radians number
----@param update boolean
-function AbstractUnlockerAdapterOld:faceDirection(radians, update)
-    error("not implemented")
-end
 
----@param radians number
-function AbstractUnlockerAdapterOld:setPitch(radians)
-    error("not implemented")
-end
+
+
 
 ---@param unit UniversalUnitPointer
 function AbstractUnlockerAdapterOld:interact(unit)
     error("not implemented")
 end
 
----@param x number
----@param y number
----@param z number
-function AbstractUnlockerAdapterOld:clickToMove(x, y, z)
-    error("not implemented")
-end
 
----@return number x, number y, number z
-function AbstractUnlockerAdapterOld:getCorpsePosition()
-    error("not implemented")
-end
+
+
 
 ---@param mapID number
 ---@param x1 number
@@ -217,17 +168,9 @@ function AbstractUnlockerAdapterOld:getCameraPosition()
     error("not implemented")
 end
 
----@param unit UniversalUnitPointer
----@return number type
-function AbstractUnlockerAdapterOld:getGameObjectType(unit)
-    error("not implemented")
-end
 
----@param unit UniversalUnitPointer
----@return boolean exists
-function AbstractUnlockerAdapterOld:isObjectExists(unit)
-    error("not implemented")
-end
+
+
 
 ---@param text string
 function AbstractUnlockerAdapterOld:setClipboardText(text)
@@ -239,17 +182,9 @@ function AbstractUnlockerAdapterOld:getClipboardText()
     error("not implemented")
 end
 
----@param unit UniversalUnitPointer
----@return number
-function AbstractUnlockerAdapterOld:getUnitFlags2(unit)
-    error("not implemented")
-end
 
----@param unit UniversalUnitPointer
----@return number
-function AbstractUnlockerAdapterOld:getUnitFlags3(unit)
-    error("not implemented")
-end
+
+
 
 ---@param unit UniversalUnitPointer
 ---@return boolean

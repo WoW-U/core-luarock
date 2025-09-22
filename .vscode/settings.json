@@ -14,8 +14,8 @@
     "Lua.workspace.library": [
         "~\\.vscode\\extensions\\amstaffix.nilname-lua-api-1.2.3\\lua-definitions",
         "~\\.vscode\\extensions\\amstaffix.daemonic-lua-api-1.6.1\\lua-definitions",
-        "~\\.vscode\\extensions\\ketho.wow-api-0.21.0\\Annotations\\Core",
-        "~\\.vscode\\extensions\\amstaffix.tinkr-lua-api-1.1.3\\lua-definitions"
+        "~\\.vscode\\extensions\\amstaffix.tinkr-lua-api-1.1.3\\lua-definitions",
+        "~\\.vscode\\extensions\\ketho.wow-api-0.21.0\\Annotations\\Core"
     ],
     "Lua.runtime.path": [
         "?.lua",

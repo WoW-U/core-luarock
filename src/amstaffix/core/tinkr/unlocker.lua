@@ -317,6 +317,13 @@ end
 
 ---@param radians number
 ---@param update boolean
-function TinkrUnlocker:faceDirection(radians, update)
+function TinkrUnlocker:getFaceDirection(radians, update)
     self.tinkr.FaceDirection(radians, update)
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return boolean, Error? err
+function TinkrUnlocker:isObjectSkinnable(objectRef)
+    return self.tinkr.ObjectSkinnable(objectRef --[[@as Tinkr.ObjectReference]])
 end

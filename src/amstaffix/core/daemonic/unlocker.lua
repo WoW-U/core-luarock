@@ -283,6 +283,13 @@ end
 
 ---@param radians number
 ---@param update boolean
-function DaemonicUnlocker:faceDirection(radians, update)
+function DaemonicUnlocker:getFaceDirection(radians, update)
     self.dmc.FaceDirection(radians, update)
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return boolean, Error? err
+function DaemonicUnlocker:isObjectSkinnable(objectRef)
+    return self.dmc.UnitIsSkinnable(objectRef --[[@as Daemonic.ObjectReference]])
 end

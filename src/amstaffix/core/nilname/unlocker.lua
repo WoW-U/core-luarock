@@ -282,6 +282,18 @@ end
 
 ---@param radians number
 ---@param update boolean
-function NilNameUnlocker:faceDirection(radians, update)
+function NilNameUnlocker:getFaceDirection(radians, update)
     self.nn.SetPlayerFacing(radians, update)
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return boolean, Error? err
+function NilNameUnlocker:isObjectSkinnable(objectRef)
+    local res = self.nn.ObjectSkinnable(objectRef --[[@as NilName.ObjectReference]])
+    if res == nil then
+        return false, Error:new("wrong objectRef")
+    end
+
+    return res
 end

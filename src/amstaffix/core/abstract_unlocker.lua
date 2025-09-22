@@ -280,7 +280,14 @@ end
 
 ---@param radians number
 ---@param update boolean
-function AbstractUnlocker:faceDirection(radians, update)
+function AbstractUnlocker:getFaceDirection(radians, update)
+    error("not implemented")
+end
+
+---@param objectRef UnlockerObjectReference
+---@nodiscard
+---@return boolean, Error? err
+function AbstractUnlocker:isObjectSkinnable(objectRef)
     error("not implemented")
 end
 

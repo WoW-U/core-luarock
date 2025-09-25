@@ -336,3 +336,7 @@ end
 function TinkrUnlocker:setMouseoverObject(objectRef)
     return self.tinkr.SetMouseover(objectRef --[[@as Tinkr.ObjectReference]])
 end
+
+function TinkrUnlocker:sendMovementHeartbeat()
+    self.tinkr.SendMovementHeartbeat()
+end

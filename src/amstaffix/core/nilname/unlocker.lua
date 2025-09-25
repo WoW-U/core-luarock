@@ -302,3 +302,7 @@ end
 function NilNameUnlocker:setMouseoverObject(objectRef)
     return self.nn.SetMouseover(objectRef --[[@as NilName.ObjectReference]])
 end
+
+function NilNameUnlocker:sendMovementHeartbeat()
+    self.nn.SendMovementHeartbeat()
+end

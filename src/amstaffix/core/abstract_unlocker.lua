@@ -296,6 +296,10 @@ function AbstractUnlocker:setMouseoverObject(objectRef)
     error("not implemented")
 end
 
+function AbstractUnlocker:sendMovementHeartbeat()
+    error("not implemented")
+end
+
 -- 
 -- methods, which build upon basic unlocker methods 
 --

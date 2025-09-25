@@ -298,3 +298,7 @@ end
 function DaemonicUnlocker:setMouseoverObject(objectRef)
     return self.dmc.SetMouseOverObject(objectRef --[[@as Daemonic.ObjectReference]])
 end
+
+function DaemonicUnlocker:sendMovementHeartbeat()
+    self.dmc.SendMovementHeartbeat()
+end

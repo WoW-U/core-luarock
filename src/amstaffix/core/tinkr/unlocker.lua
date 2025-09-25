@@ -206,7 +206,11 @@ end
 ---@param func function|string
 ---@param ... any
 function TinkrUnlocker:callSecurely(func, ...)
-    error("not implemented in Tinkr")
+    if type(func) == "function" then
+        return func(...)
+    else
+        return _G[func](...)
+    end
 end
 
 ---@param objectRef UnlockerObjectReference
@@ -243,7 +247,7 @@ end
 ---@nodiscard
 ---@return boolean exists
 function TinkrUnlocker:isObjectExists(objectRef)
-    error("not implemented in Tinkr")
+    return UnitExists(objectRef --[[@as string]])
 end
 
 ---@param objectRef UnlockerObjectReference
@@ -326,4 +330,9 @@ end
 ---@return boolean, Error? err
 function TinkrUnlocker:isObjectSkinnable(objectRef)
     return self.tinkr.ObjectSkinnable(objectRef --[[@as Tinkr.ObjectReference]])
+end
+
+---@param objectRef UnlockerObjectReference
+function TinkrUnlocker:setMouseoverObject(objectRef)
+    return self.tinkr.SetMouseover(objectRef --[[@as Tinkr.ObjectReference]])
 end

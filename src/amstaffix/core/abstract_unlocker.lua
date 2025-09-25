@@ -291,6 +291,11 @@ function AbstractUnlocker:isObjectSkinnable(objectRef)
     error("not implemented")
 end
 
+---@param objectRef UnlockerObjectReference
+function AbstractUnlocker:setMouseoverObject(objectRef)
+    error("not implemented")
+end
+
 -- 
 -- methods, which build upon basic unlocker methods 
 --

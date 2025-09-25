@@ -293,3 +293,8 @@ end
 function DaemonicUnlocker:isObjectSkinnable(objectRef)
     return self.dmc.UnitIsSkinnable(objectRef --[[@as Daemonic.ObjectReference]])
 end
+
+---@param objectRef UnlockerObjectReference
+function DaemonicUnlocker:setMouseoverObject(objectRef)
+    return self.dmc.SetMouseOverObject(objectRef --[[@as Daemonic.ObjectReference]])
+end

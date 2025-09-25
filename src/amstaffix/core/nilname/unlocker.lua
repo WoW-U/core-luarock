@@ -100,7 +100,7 @@ end
 ---@nodiscard
 ---@return number, Error? err
 function NilNameUnlocker:getObjectHeight(objectRef)
-    error("not implemented for NilName, find a way to implement.")
+    return self.nn.ObjectHeight(objectRef --[[@as NilName.ObjectReference]])
 end
 
 ---@param objectRef UnlockerObjectReference
@@ -149,7 +149,7 @@ end
 ---@nodiscard
 ---@return number, Error? err
 function NilNameUnlocker:getObjectCreatureTypeId(objectRef)
-    error("not implemented in NilName")
+    return self.nn.UnitCreatureTypeId(objectRef --[[@as NilName.ObjectReference]])
 end
 
 ---@param objectRef UnlockerObjectReference
@@ -239,7 +239,7 @@ end
 ---@nodiscard
 ---@return number, Error? err
 function NilNameUnlocker:getUnitNpcFlags(objectRef)
-    error("not implemented in NilName")
+    return self.nn.NPCFlags(objectRef --[[@as NilName.ObjectReference]])
 end
 
 ---@param objectRef UnlockerObjectReference
@@ -263,7 +263,7 @@ end
 
 ---@param radians number
 function NilNameUnlocker:setPitch(radians)
-    error("not implemented in NilName")
+    return self.nn.SetPitch("player", radians)
 end
 
 ---@param x number
@@ -296,4 +296,9 @@ function NilNameUnlocker:isObjectSkinnable(objectRef)
     end
 
     return res
+end
+
+---@param objectRef UnlockerObjectReference
+function NilNameUnlocker:setMouseoverObject(objectRef)
+    return self.nn.SetMouseover(objectRef --[[@as NilName.ObjectReference]])
 end

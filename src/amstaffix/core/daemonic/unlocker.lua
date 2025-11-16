@@ -283,7 +283,7 @@ end
 
 ---@param radians number
 ---@param update boolean
-function DaemonicUnlocker:getFaceDirection(radians, update)
+function DaemonicUnlocker:setFaceDirection(radians, update)
     self.dmc.FaceDirection(radians, update)
 end
 

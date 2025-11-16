@@ -282,7 +282,7 @@ end
 
 ---@param radians number
 ---@param update boolean
-function NilNameUnlocker:getFaceDirection(radians, update)
+function NilNameUnlocker:setFaceDirection(radians, update)
     self.nn.SetPlayerFacing(radians, update)
 end
 

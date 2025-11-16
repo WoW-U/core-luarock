@@ -280,7 +280,7 @@ end
 
 ---@param radians number
 ---@param update boolean
-function AbstractUnlocker:getFaceDirection(radians, update)
+function AbstractUnlocker:setFaceDirection(radians, update)
     error("not implemented")
 end
 

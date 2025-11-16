@@ -321,7 +321,7 @@ end
 
 ---@param radians number
 ---@param update boolean
-function TinkrUnlocker:getFaceDirection(radians, update)
+function TinkrUnlocker:setFaceDirection(radians, update)
     self.tinkr.FaceDirection(radians, update)
 end
 

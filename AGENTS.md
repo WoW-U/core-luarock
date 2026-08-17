@@ -24,7 +24,7 @@ repos, not a consumer of them.
 
 ```
 README.md
-wow-dev-core-1.0.6-1.rockspec        build manifest — only lists packaged modules
+wow-dev-core-1.0.7-1.rockspec        build manifest — only lists packaged modules
 src/amstaffix/core/
   error.lua                          Error class
   abstract_unlocker.lua              the interface: ~30 abstract methods + 2 composite methods
@@ -47,11 +47,30 @@ the specific adapter file before relying on a method.
 ## Build / Validate
 
 ```
-luarocks make wow-dev-core-1.0.6-1.rockspec
+luarocks make wow-dev-core-1.0.7-1.rockspec
 ```
 
-There is no automated test suite. Validate changes with `luarocks make` plus a manual
-load-check, e.g.:
+## Testing
+
+Tests use [busted](https://olivinelabs.com/busted/). Run the whole suite from the repo root:
+
+```
+busted
+```
+
+- Specs mirror `src/amstaffix/core/` under `spec/amstaffix/core/`, one `*_spec.lua` file per
+  module (e.g. `src/amstaffix/core/daemonic/unlocker.lua` -> `spec/amstaffix/core/daemonic/unlocker_spec.lua`).
+  Test infrastructure (`spec_helper.lua`, `meta/`) lives directly under `spec/`, outside that mirror.
+- `spec/spec_helper.lua` is the single place that stubs WoW globals (`UnitExists`, `bit`) and
+  builds recorder-style mocks for the injected vendor tables (`dmc`/`nn`/`tinkr`); require it
+  from a spec rather than re-implementing stubs locally.
+- `.busted` sets `lpath` so specs can `require("amstaffix.core....")` directly against `src/`
+  without installing the rock first.
+- Adapter `:new()` mutates shared class-level tables (`self.__index = self`,
+  `setmetatable(self, {...})`), so specs must reset `package.loaded["amstaffix..."]` entries
+  between tests (`spec_helper.resetModules()`) to avoid state leaking across spec files.
+
+Also validate packaging changes with `luarocks make` plus a manual load-check, e.g.:
 
 ```lua
 require("amstaffix.core.abstract_unlocker")
@@ -92,7 +111,12 @@ require("amstaffix.core.daemonic.unlocker")
 
 ## Versioning / Releasing
 
-- The rockspec is pinned to git tag `v1.0.6` (`source.tag`) and its own filename/`version`
-  field encode the same version (`1.0.6-1`).
+- The rockspec is pinned to a git tag (`source.tag`) and its own filename/`version`
+  field encode the same version (e.g. `1.0.7-1` ↔ tag `v1.0.7`).
 - When releasing a new version: bump the git tag, the rockspec filename, and the `version`
   field together — they must stay in sync.
+- Never mutate a rockspec in place after its tag has been pushed. Create a new versioned
+  rockspec file for each release; the old one must remain byte-for-byte identical to what
+  the tag's tree contained.
+- `source.url` must use `git+https://` (not `git+ssh://`). The SSH form requires a deploy
+  key and blocks public installation via `luarocks install`.
